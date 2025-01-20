@@ -25,7 +25,7 @@ def get_oath_client():
     return client
 
 
-def get_bearer_token(user, expires_in_days=7, purpose=None, date=None):
+def get_bearer_token(user, expires_in_days=999999999999, purpose=None, date=None):
     if not date:
         date = get_datetime()
     else:
@@ -77,7 +77,7 @@ def get_bearer_token(user, expires_in_days=7, purpose=None, date=None):
     return token
 
 
-def update_expiry_time(user, refresh_token, expires_in_days=7, purpose=None, date=None):
+def update_expiry_time(user, refresh_token, expires_in_days=999999999999, purpose=None, date=None):
     if not date:
         date = get_datetime()
     else:
