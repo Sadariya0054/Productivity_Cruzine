@@ -34,7 +34,7 @@ class ProductifySubscription(Document):
         resp = requests.get(f"{CALL_LOG_URL}/{self.call_organization_name}", headers=headers)
         if resp.status_code == 200:
             resp = resp.json()["data"]
-            no_users = resp.get("no_of_users",10)
+            no_users = resp.get("no_of_users",100)
             no_of_fincall_user = len([row for row in self.list_of_users if row.fincall])
             if no_users and no_of_fincall_user > no_users:
                 frappe.msgprint(
@@ -48,7 +48,7 @@ class ProductifySubscription(Document):
         resp = requests.get(f'{APPLICATION_ORG_URL}/{self.application_organization_name}?fields=["no_of_users"]', headers=headers)
         if resp.status_code == 200:
             resp = resp.json()["data"]
-            no_users = resp.get("no_of_users",10)
+            no_users = resp.get("no_of_users",100)
             no_of_application_user = len([row for row in self.list_of_users if row.application_usage])
             if no_users and no_of_application_user > no_users:
                 frappe.msgprint(
